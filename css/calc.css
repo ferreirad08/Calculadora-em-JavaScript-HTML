@@ -1,11 +1,11 @@
-.txt {
+.txt {  
     font: 1.5rem 'Fira Sans', sans-serif;
     color: orange;
     width: 211px;
     height: 30px;
 }
 
-.btn {
+.btn {  
     font: 1.5rem 'Fira Sans', sans-serif;
     background: white;
     border: none;
