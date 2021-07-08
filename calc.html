@@ -44,24 +44,42 @@
             <tr>
                 <td><input type="button" class="btn" value="^" onClick="Calc.Input.value += '^'"></td>
                 <td><input type="button" class="btn" value="&radic;" onClick="Calc.Input.value += '^(1/2)'"></td>
-                <td><input type="button" class="btn" value="<-" onClick="del()"></td>
+                <td><input type="button" class="btn" value="&#8678;" onClick="del()"></td>
+                <td><input type="button" class="btn" value="&pi;" onClick="Calc.Input.value += '&pi;'"></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="btn" value="+/-" onClick='Calc.Input.value = Calc.Input.value.replace("-", "+")'></td>
+                <td><input type="button" class="btn" value="dict" onClick="dict()"></td>
             </tr>
         </table>
     </form>
     <script>
-    function equal() {
-        var len = Calc.Input.value.length
-        for (var i = 0; i < len; i++) {
-            Calc.Input.value = Calc.Input.value.replace("^", "**");
-        }
-        // https://www.digitalocean.com/community/tutorials/how-to-index-split-and-manipulate-strings-in-javascript-pt
-        Calc.Input.value = eval(Calc.Input.value);
-    }
+        var trace1 = {
+            'x': [0, 1, 2, 3, 4, 5, 6],
+            'y': [1, 9, 4, 7, 5, 2, 4],
+            'mode': 'markers',
+            'marker': {
+                'size': [20, 40, 25, 10, 60, 90, 30],
+            }
+        };
 
-    function del() {
-    	var len = Calc.Input.value.length - 1
-        Calc.Input.value = Calc.Input.value.slice(0, len);
-    }
+        function equal() {
+            var len = Calc.Input.value.length
+            for (var i = 0; i < len; i++) {
+                Calc.Input.value = Calc.Input.value.replace("^", "**");
+                Calc.Input.value = Calc.Input.value.replace("π", "3.141592653589793238");
+            }
+            Calc.Input.value = eval(Calc.Input.value);
+        }
+
+        function del() {
+            var len = Calc.Input.value.length
+            Calc.Input.value = Calc.Input.value.slice(0, len - 1);
+        }
+
+        function dict() {
+            Calc.Input.value = trace1['x']
+        }
     </script>
 </body>
 </html>
