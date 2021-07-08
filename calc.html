@@ -3,46 +3,65 @@
 <html>
 <link href="css/calc.css" rel="stylesheet">
 <head>
-	<meta charset="UTF-8"/>
-	<title>Calcm</title>
+    <meta charset="UTF-8"/>
+    <title>Calcm</title>
 </head>
 <body>
-	<!-- Conteúdo -->
-	<form name="Calc">
-		<input type="text" name="Input" class="txt">
-		<table>
-			<tr>
-				<td><input type="button" class="btn" value="C" onClick="Calc.Input.value = ''"></td>
-				<td><input type="button" class="btn" value="e" onClick="Calc.Input.value += 'e'"></td>
-				<td><input type="button" class="btn" value="(" onClick="Calc.Input.value += '('"></td>
-				<td><input type="button" class="btn" value=")" onClick="Calc.Input.value += ')'"></td>
-			</tr>
-			<tr>
-				<td><input type="button" class="btn" value="7" onClick="Calc.Input.value += '7'"></td>
-				<td><input type="button" class="btn" value="8" onClick="Calc.Input.value += '8'"></td>
-				<td><input type="button" class="btn" value="9" onClick="Calc.Input.value += '9'"></td>
-				<td><input type="button" class="btnOp" value="/" onClick="Calc.Input.value += '/'"></td>
-			</tr>
-			<tr>
-				<td><input type="button" class="btn" value="4" onClick="Calc.Input.value += '4'"></td>
-				<td><input type="button" class="btn" value="5" onClick="Calc.Input.value += '5'"></td>
-				<td><input type="button" class="btn" value="6" onClick="Calc.Input.value += '6'"></td>
-				<td><input type="button" class="btnOp" value="*" onClick="Calc.Input.value += '*'"></td>
-			</tr>
-			<tr>
-				<td><input type="button" class="btn" value="1" onClick="Calc.Input.value += '1'"></td>
-				<td><input type="button" class="btn" value="2" onClick="Calc.Input.value += '2'"></td>
-				<td><input type="button" class="btn" value="3" onClick="Calc.Input.value += '3'"></td>
-				<td><input type="button" class="btnOp" value="-" onClick="Calc.Input.value += '-'"></td>
-			</tr>
-			<tr>
-				<td><input type="button" class="btn" value="0" onClick="Calc.Input.value += '0'"></td>
-				<td><input type="button" class="btn" value="." onClick="Calc.Input.value += '.'"></td>
-				<td><input type="button" class="btnDoIt" value="=" onClick="Calc.Input.value = eval(Calc.Input.value)"></td>
-				<td><input type="button" class="btnOp" value="+" onClick="Calc.Input.value += '+'"></td>
-			</tr>
-				
-		</table>
-	</form>
+    <!-- Conteúdo -->
+    <form name="Calc">
+        <input type="text" name="Input" class="txt">
+        <table>
+            <tr>
+                <td><input type="button" class="btn" value="C" onClick="Calc.Input.value = ''"></td>
+                <td><input type="button" class="btn" value="e" onClick="Calc.Input.value += 'e'"></td>
+                <td><input type="button" class="btn" value="(" onClick="Calc.Input.value += '('"></td>
+                <td><input type="button" class="btn" value=")" onClick="Calc.Input.value += ')'"></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="btn" value="7" onClick="Calc.Input.value += '7'"></td>
+                <td><input type="button" class="btn" value="8" onClick="Calc.Input.value += '8'"></td>
+                <td><input type="button" class="btn" value="9" onClick="Calc.Input.value += '9'"></td>
+                <td><input type="button" class="btnOp" value="/" onClick="Calc.Input.value += '/'"></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="btn" value="4" onClick="Calc.Input.value += '4'"></td>
+                <td><input type="button" class="btn" value="5" onClick="Calc.Input.value += '5'"></td>
+                <td><input type="button" class="btn" value="6" onClick="Calc.Input.value += '6'"></td>
+                <td><input type="button" class="btnOp" value="*" onClick="Calc.Input.value += '*'"></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="btn" value="1" onClick="Calc.Input.value += '1'"></td>
+                <td><input type="button" class="btn" value="2" onClick="Calc.Input.value += '2'"></td>
+                <td><input type="button" class="btn" value="3" onClick="Calc.Input.value += '3'"></td>
+                <td><input type="button" class="btnOp" value="-" onClick="Calc.Input.value += '-'"></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="btn" value="0" onClick="Calc.Input.value += '0'"></td>
+                <td><input type="button" class="btn" value="." onClick="Calc.Input.value += '.'"></td>
+                <td><input type="button" class="btnDoIt" value="=" onClick="equal()"></td>
+                <td><input type="button" class="btnOp" value="+" onClick="Calc.Input.value += '+'"></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="btn" value="^" onClick="Calc.Input.value += '^'"></td>
+                <td><input type="button" class="btn" value="&radic;" onClick="Calc.Input.value += '^(1/2)'"></td>
+                <td><input type="button" class="btn" value="<-" onClick="del()"></td>
+            </tr>
+        </table>
+    </form>
+    <script>
+    function equal() {
+        var len = Calc.Input.value.length
+        for (var i = 0; i < len; i++) {
+            Calc.Input.value = Calc.Input.value.replace("^", "**");
+        }
+        // https://www.digitalocean.com/community/tutorials/how-to-index-split-and-manipulate-strings-in-javascript-pt
+        Calc.Input.value = eval(Calc.Input.value);
+    }
+
+    function del() {
+    	var len = Calc.Input.value.length - 1
+        Calc.Input.value = Calc.Input.value.slice(0, len);
+    }
+    </script>
 </body>
 </html>
